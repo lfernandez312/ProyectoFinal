@@ -1,0 +1,41 @@
+<br><br>
+{{#if compras.length}}
+<div class="table-responsive">
+    <h3>Mis Compras</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Código Compra</th>
+                <th>Fecha</th>
+                <th>Monto</th>
+                <th>Productos</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each compras}}
+            <tr>
+                <td>{{code}}</td>
+                <td>{{purchase_datetime}}</td>
+                <td>{{amount}}</td>
+                <td>
+                    <div class="row">
+                        {{#each products}}
+                        <div class="col">
+                            <ul>
+                                <li>{{name}}</li>
+                                <li>Cantidad: {{quantity}}</li>
+                                <li>Precio unitario: {{price}}</li>
+                            </ul>
+                        </div>
+                        {{/each}}
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{else}}
+<p>No hay compras actualmente.</p>
+{{/if}}
+

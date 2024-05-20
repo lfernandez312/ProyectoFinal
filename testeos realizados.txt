@@ -1,0 +1,17 @@
+testeo login:
+
+usuario y pass correctos --> ingresa ok ---> ok
+
+usuario o pass incorrectos -- Credenciales inválidas ---ok
+
+si no existe mail al restablecer pass? arroja mensaje --- ok
+si existe, reenvía el mail ---ok
+
+cambia la pass? si y verifica con la ultima contraseña para que no sean idénticas.
+
+
+-----
+
+registro 
+
+que pasa si es menor de 18 años?

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Producto</title>
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .preview-image {
+      max-width: 200px;
+      max-height: 200px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="mt-5 mb-4">Editar Producto</h1>
+    <form action="/edit/{{product._id}}" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{product.name}}">
+      </div>
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <input type="text" class="form-control" id="category" name="category" value="{{product.category}}">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea class="form-control" id="description" name="description">{{product.description}}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" class="form-control" id="price" name="price" value="{{product.price}}">
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Subir Imagenes:</label>
+        <input type="file" class="form-control-file mt-2" id="image" name="images" multiple>
+      </div>
+      <div class="form-group">
+        <label for="image">Imagen 1:</label>
+        <img id="previewImage1" class="preview-image" src="/images/{{product.category}}/{{product.imageUrl1}}" alt="No hay imagen cargada">
+      </div>
+      <div class="form-group">
+        <label for="image">Imagen 2:</label>
+        <img id="previewImage2" class="preview-image" src="/images/{{product.category}}/{{product.imageUrl2}}" alt="No hay imagen cargada">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="status" name="status" {{#if product.status}}checked{{/if}}>
+        <label class="form-check-label" for="status">Estado</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="discount" name="discount" {{#if
+          product.discount}}checked{{/if}}>
+        <label class="form-check-label" for="discount">Descuento</label>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="availability" name="availability" {{#if
+          product.availability}}checked{{/if}}>
+        <label class="form-check-label" for="availability">Disponibilidad</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteProductModal">Eliminar Producto</button>
+    </form>
+  </div>
+  <!-- Modal de confirmación para eliminar el producto -->
+  <div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="deleteProductModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteProductModalLabel">Eliminar Producto</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ¿Está seguro de que desea eliminar este producto?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <!-- Formulario para enviar la solicitud de eliminación -->
+            <form action="/new/remove/{{product._id}}" method="POST" style="display: inline;">
+              <input type="hidden" name="_method" value="DELETE">
+              <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

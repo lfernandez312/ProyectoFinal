@@ -1,0 +1,38 @@
+<br><br>
+<h1>Usuarios</h1>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Tipo de cuenta</th>
+                    <th>Ultima session</th>
+                    <th>Dar Aviso Eliminacion cuenta</th>
+                    <th>Eliminar Definitivamente</th>
+                    <th>Cambiar Rol (premium/user)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each users}}
+                    <tr>
+                        <td>{{this.first_name}} {{this.last_name}}</td>
+                        <td>{{this.email}}</td>
+                        <td>{{this.role}}</td>
+                        <td>{{this.last_connection}}</td>
+                        <td>
+                            <button onclick="sendNotification('{{this._id}}')" class="btn btn-warning">Avisar</button>
+                        </td>
+                        <td>
+                            <button onclick="deleteUser('{{this._id}}')" class="btn btn-danger">Eliminar</button>
+                        </td>
+                        <td>
+                            <button onclick="changeUserRole('{{this._id}}', '{{this.role}}')" class="btn btn-info">Cambiar Rol</button>
+                        </td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,175 @@
+openapi: 3.0.0
+info:
+  title: Documentación de API para Gestión de Productos
+  description: Documentación de API para la gestión de productos en un sistema de comercio electrónico,RECORDA ESTAR LOGUEADO PREVIAMENTE EN EL SISTEMA.
+  version: 1.0.0
+
+paths:
+  /api/users:
+    get:
+      summary: Obtener todos los usuarios
+      description: Devuelve todos los usuarios registrados en el sistema.
+      responses:
+        '200':
+          description: Usuarios recuperados exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+        '500':
+          description: Error interno del servidor al intentar obtener los usuarios
+
+  /api/users/premium/{uid}:
+    put:
+      summary: Cambiar el rol de un usuario a premium
+      description: Cambia el rol de un usuario a "premium".
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: ID del usuario a modificar
+      responses:
+        '200':
+          description: Rol de usuario actualizado exitosamente a "premium"
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: Usuario no encontrado
+        '500':
+          description: Error interno del servidor al intentar actualizar el rol del usuario
+
+  /api/cart:
+    post:
+      summary: Crear un nuevo carrito
+      description: Crea un nuevo carrito en el sistema.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Carrito creado exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error interno del servidor al intentar crear el carrito
+
+  /api/cart/{id}/total:
+    get:
+      summary: Obtener el precio total de un carrito
+      description: Obtiene el precio total de un carrito específico.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID del carrito
+      responses:
+        '200':
+          description: Precio total del carrito obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error interno del servidor al intentar obtener el precio total del carrito
+
+  /api/cart/info:
+    get:
+      summary: Obtener información del carrito
+      description: Obtiene información detallada del carrito, incluyendo precios y productos.
+      responses:
+        '200':
+          description: Información del carrito obtenida exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+        '404':
+          description: El carrito está vacío o no se encontró
+        '500':
+          description: Error interno del servidor al intentar obtener la información del carrito
+
+  /api/cart/carrito:
+    get:
+      summary: Obtener todos los carritos
+      description: Obtiene todos los carritos registrados en el sistema.
+      responses:
+        '200':
+          description: Carritos obtenidos exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error interno del servidor al intentar obtener los carritos
+
+  /api/cart/carrito/{id}:
+    get:
+      summary: Obtener un carrito por ID
+      description: Obtiene un carrito específico por su ID.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+          description: ID del carrito
+      responses:
+        '200':
+          description: Carrito obtenido exitosamente
+          content:
+            application/json:
+              schema:
+                type: object
+        '500':
+          description: Error interno del servidor al intentar obtener el carrito por ID
+
+  /api/cart/agregar:
+    post:
+      summary: Agregar producto al carrito
+      description: Agrega un producto al carrito del usuario actual.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+      responses:
+        '200':
+          description: Producto agregado al carrito con éxito
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: El usuario no tiene permiso para agregar productos al carrito
+        '500':
+          description: Error interno del servidor al intentar agregar producto al carrito
+
+  /api/products:
+    get:
+      summary: Obtener categorías de productos
+      description: Obtiene todas las categorías de productos disponibles en la base de datos.
+      responses:
+        '200':
+          description: Categorías de productos obtenidas exitosamente
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+        '500':
+          description: Error interno del servidor al intentar obtener las categorías de productos

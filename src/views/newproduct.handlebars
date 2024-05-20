@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Nuevo Producto</title>
+  <style>
+    body {
+      padding: 20px;
+    }
+
+    .preview-image {
+      max-width: 200px;
+      max-height: 200px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+    <h1 class="mt-5 mb-4">Crear Nuevo Producto</h1>
+    <form action="/new/create" method="POST">
+      <div class="form-group">
+        <label for="name">Nombre:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <select class="form-control" id="category" name="category" required>
+          <option value="" selected disabled>Selecciona una categoría</option>
+          {{#each categories}}
+            <option value="{{this}}">{{this}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea class="form-control" id="description" name="description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="price">Precio:</label>
+        <input type="number" class="form-control" id="price" name="price" required>
+      </div>
+      <div class="form-group">
+        <label for="availability">Disponibilidad:</label>
+        <select class="form-control" id="availability" name="availability" required>
+          <option value="true">Disponible</option>
+          <option value="false">No disponible</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="status">Estado:</label>
+        <select class="form-control" id="status" name="status" required>
+          <option value="true">Activo</option>
+          <option value="false">Inactivo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="discount">Descuento:</label>
+        <select class="form-control" id="discount" name="discount" required>
+          <option value="true">Activo</option>
+          <option value="false">Inactivo</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="image">Imagen:</label>
+        <input type="file" class="form-control" id="image" name="image" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Crear Producto</button>
+    </form>
+  </div>
+</body>
+
+</html>
