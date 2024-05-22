@@ -8,7 +8,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "cross-env ENVIRONMENT=dev node src/app.js",
     "start:prod": "cross-env ENVIRONMENT=prod node src/app.js",
-    "start:test": "mocha test/supertest.js"
+    "start:test": "mocha test/supertest.js",
+    "commit": "git add . && git commit -m",
+    "push": "git push origin master",
+    "deploy": "npm run commit && npm run push"
   },
   "keywords": [],
   "author": "Fernandez Leonel",
