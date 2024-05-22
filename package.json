@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "SET ENVIRONMENT=prod && nodemon src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "SET ENVIRONMENT=dev && nodemon src/app.js",
     "start:prod": "SET ENVIRONMENT=prod && nodemon src/app.js",
