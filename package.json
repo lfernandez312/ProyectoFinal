@@ -9,9 +9,7 @@
     "start:dev": "cross-env ENVIRONMENT=dev node src/app.js",
     "start:prod": "cross-env ENVIRONMENT=prod node src/app.js",
     "start:test": "mocha test/supertest.js",
-    "commit": "git add . && git commit -m",
-    "push": "git push origin master",
-    "deploy": "npm run commit && npm run push"
+    "deploy": "git add . && git commit -m \"Resuelto conflicto después de hacer pull\" && git push origin master && git pull origin master"
   },
   "keywords": [],
   "author": "Fernandez Leonel",
