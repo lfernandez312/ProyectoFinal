@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node tu-archivo-de-entrada.js",
+    "start": "src/app.js",
     "start:dev": "SET ENVIRONMENT=dev && nodemon src/app.js",
     "start:prod": "SET ENVIRONMENT=prod && nodemon src/app.js",
     "start:test": "mocha test/supertest.js"
