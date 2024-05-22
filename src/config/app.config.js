@@ -1,4 +1,4 @@
 module.exports = {
-    environment:process.env.ENVIRONMENT,
+    environment: process.env.ENVIRONMENT || 'prod',
 }
   
