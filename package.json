@@ -4,11 +4,7 @@
   "description": "",
   "main": "src/app.js",
   "scripts": {
-<<<<<<< HEAD
     "start": "cross-env ENVIRONMENT=prod node src/app.js",
-=======
-    "start": "node src/app.js && SET ENVIRONMENT=prod",
->>>>>>> 2af858732d8996d9ae3d8784034e0a43a9ff4808
     "test": "echo \"Error: no test specified\" && exit 1",
     "start:dev": "cross-env ENVIRONMENT=dev node src/app.js",
     "start:prod": "cross-env ENVIRONMENT=prod node src/app.js",
